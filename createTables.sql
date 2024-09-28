@@ -1,3 +1,5 @@
+-- noinspection SqlNoDataSourceInspectionForFile
+
 CREATE TYPE subscriptionTier AS ENUM ('free', 'paid', 'power');
 
 CREATE TABLE customers (
@@ -23,7 +25,7 @@ CREATE TABLE services (
 CREATE TABLE serviceOfferings (
     offeringID SERIAL PRIMARY KEY,
     offeringTitle VARCHAR(25),
-    offeredBy VARCHAR(50) UNIQUE REFERENCES services(serviceName)
+    offeredBy VARCHAR(50) REFERENCES services(serviceName)
 );
 
 CREATE TABLE subscriptions (
@@ -36,11 +38,12 @@ CREATE TABLE products (
 	productID SERIAL PRIMARY KEY,
 	productName VARCHAR(50) NOT NULL UNIQUE,
     productDescription VARCHAR(200),
-    basePrice FLOAT NOT NULL,
+    basePrice INT NOT NULL,
     serviceConnection INT REFERENCES services(serviceID)
 );
 
 CREATE TABLE purchases (
+    purchaseID SERIAL PRIMARY KEY,
 	userID INT NOT NULL references customers(id),
 	productID INT NOT NULL references products(productID)
 );

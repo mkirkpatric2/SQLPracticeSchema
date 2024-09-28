@@ -32,3 +32,11 @@ serviceName = [
     "Consulting Services"
 ]
 
+offeringName = [
+    "offering1",
+    "offering2",
+    "offering3",
+    "offering4",
+    "offering5"
+]
+
